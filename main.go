@@ -25,7 +25,6 @@ func main() {
 	for scanner.Scan() {
 		r := regexp.MustCompile(`SITE \"(?P<name>[\w\s\-\.\d]+)\" \(id:(?P<id>\d+),bindings:(?P<bindings>[http\/\*\:\d\:\w\.\,]+),state:\w+`)
 		match := r.FindStringSubmatch(strings.TrimSpace(scanner.Text()))
-		// SITE "Medtech1" (id:135545492,bindings:http/:80:medtech1.com,http/*:80:web5.medtech1.com,state:Started)
 		if len(match) != 0 {
 			site := lib.Site{}
 			site.Name = match[1]
